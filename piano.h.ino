@@ -1,18 +1,18 @@
 #include<Adafruit_CircuitPlayground.h>
-//left octave
-#define NOTE_C3  131
-#define NOTE_CS3 139
-#define NOTE_D3  147
-#define NOTE_DS3 156
-#define NOTE_E3  165
-#define NOTE_F3  175
-#define NOTE_FS3 185
-#define NOTE_G3  196
-#define NOTE_GS3 208
-#define NOTE_A3  220
-#define NOTE_AS3 233
-#define NOTE_B3  247
 //right octave
+#define NOTE_C5  523
+#define NOTE_CS5 554
+#define NOTE_D5  587
+#define NOTE_DS5 622
+#define NOTE_E5  659
+#define NOTE_F5  698
+#define NOTE_FS5 739
+#define NOTE_G5  783
+#define NOTE_GS5 830
+#define NOTE_A5  880
+#define NOTE_AS5 932
+#define NOTE_B5  988
+//left octave
 #define NOTE_C4  262
 #define NOTE_CS4 277
 #define NOTE_D4  294
@@ -59,133 +59,155 @@ void playNote(int f) {
 
 
 void loop() {
-  //C3-B3
+  int thresholdON = 40;
+  int thresholdOFF = 35;
+  //C4-B4
   //C  (Cap1 on)
-  //if(cap0 < 300 && cap1 < 300 && cap2 < 300 && cap3 > 300){
-  if (cap1 > 30 && cap0 < 30 && cap3 < 30 && cap2 < 30) {
+  if (cap1 > thresholdON && cap0 < thresholdOFF && cap3 < thresholdOFF && cap2 < thresholdOFF) {
     //CircuitPlayground.playTone(NOTE_C3,100, false);
     silentNoteRed(0);
     playNote(NOTE_C4);
   }
   //C#  (Cap0 on)
-  //else  if(cap0 < 300 && cap1 < 300 && cap2 > 300 && cap3 < 300){
-  else if (cap0 > 30 && cap1 < 30 && cap2 < 30 && cap3 < 30) {
+  else if (cap0 > thresholdON && cap1 < thresholdOFF && cap2 < thresholdOFF && cap3 < thresholdOFF) {
     //CircuitPlayground.playTone(NOTE_CS3,100,false);
     silentNoteYellow(0);
     playNote(NOTE_CS4);
   }
   //D  (Cap 0 and 1 On)
-  else if (cap0 > 30 && cap1 > 30 && cap2 < 30 && cap3 < 30) {
+  else if (cap0 > thresholdON && cap1 > thresholdON && cap2 < thresholdOFF && cap3 < thresholdOFF) {
     silentNoteRed(1);
     playNote(NOTE_D4);
   }
   //D# (cap2 on)
-  else if (cap2 > 30 && cap0 < 30 && cap1 < 30 && cap3 < 30) {
+  else if (cap2 > thresholdON && cap0 < thresholdOFF && cap1 < thresholdOFF && cap3 < thresholdOFF) {
     silentNoteYellow(1);
     playNote(NOTE_DS4);
   }
   //E  (cap 2 and 1 on)
-  else if (cap2 > 30 && cap1 > 30 && cap0 < 30 && cap3 < 30) {
+  else if (cap2 > thresholdON && cap1 > thresholdON && cap0 < thresholdOFF && cap3 < thresholdOFF) {
     silentNoteRed(2);
     playNote(NOTE_E4);
   }
   //F  (cap 0 and 2 on)
-  else if (cap0 > 30 && cap2 > 30 && cap1 < 30 && cap3 < 30) {
+  else if (cap0 > thresholdON && cap2 > thresholdON && cap1 < thresholdOFF && cap3 < thresholdOFF) {
     silentNoteRed(3);
     playNote(NOTE_F4);
   }
   //F# (cap 2 and 0 and 1 on)
-  else if (cap2 > 25 && cap0 > 25 && cap1 > 25 && cap3 < 30) {
+  else if (cap2 > thresholdON && cap0 > thresholdON && cap1 > thresholdON && cap3 < thresholdOFF) {
     silentNoteYellow(2);
     playNote(NOTE_FS4);
   }
   //G  (cap 3 on)
-  else if (cap3 > 30 && cap0 < 30 && cap1 < 30 && cap2 < 30) {
+  else if (cap3 > thresholdON && cap0 < thresholdOFF && cap1 < thresholdOFF && cap2 < thresholdOFF) {
     silentNoteRed(4);
     playNote(NOTE_G4);
   }
   //G#  (cap3 and 1 on)
-  else if (cap3 > 30 && cap1 > 30 && cap0 < 30 && cap2 < 30) {
+  else if (cap3 > thresholdON && cap1 > thresholdON && cap0 < thresholdOFF && cap2 < thresholdOFF) {
     silentNoteYellow(3);
     playNote(NOTE_GS4);
   }
   //A   (cap 0 and 3 on)
-  else if (cap0 > 30 && cap3 > 30 && cap1 < 30 && cap2 < 30) {
+  else if (cap0 > thresholdON && cap3 > thresholdON && cap1 < thresholdOFF && cap2 < thresholdOFF) {
     silentNoteBlue(0);
     playNote(NOTE_A4);
   }
   //A#  (cap3 and 0 and 1 on)
-  else if (cap3 > 25 && cap0 > 25 && cap1 > 25 && cap2 < 30) {
+  else if (cap3 > thresholdON && cap0 > thresholdON && cap1 > thresholdON && cap2 < thresholdOFF) {
     silentNoteYellow(4);
     playNote(NOTE_AS4);
   }
   //B  (cap 3 and 2 on)
-  else if (cap3 > 30 && cap2 > 30 && cap0 < 30 && cap1 < 30) {
+  else if (cap3 > thresholdON && cap2 > thresholdON && cap0 < thresholdOFF && cap1 < thresholdOFF) {
     silentNoteBlue(1);
     playNote(NOTE_B4);
   }
 
-  //C4-B4
+  //C5-B5
   //C  (Cap12 on)
-  //if(cap0 < 300 && cap1 < 300 && cap2 < 300 && cap3 > 300){
-  if (cap12 > 30 && cap10 < 30 && cap9 < 30 && cap6 < 30) {
+  if (cap12 > thresholdON && cap10 < thresholdOFF && cap9 < thresholdOFF && cap6 < thresholdOFF) {
     //CircuitPlayground.playTone(NOTE_C3,100, false);
     silentNoteRed(5);
+    playNote(NOTE_C5);
   }
   //C#  (Cap6 on)
-  //else  if(cap0 < 300 && cap1 < 300 && cap2 > 300 && cap3 < 300){
-  else if (cap6 > 30 && cap10 < 30 && cap9 < 30 && cap12 < 30) {
+  else if (cap6 > thresholdON && cap10 < thresholdOFF && cap9 < thresholdOFF && cap12 < thresholdOFF) {
     //CircuitPlayground.playTone(NOTE_CS3,100,false);
     silentNoteYellow(5);
+    playNote(NOTE_CS5);
   }
   //D  (Cap 6 and 12 On)
-  else if (cap6 > 30 && cap12 > 30 && cap10 < 30 && cap9 < 30) {
+  else if (cap6 > thresholdON && cap12 > thresholdON && cap10 < thresholdOFF && cap9 < thresholdOFF) {
     silentNoteRed(6);
+    playNote(NOTE_D5);
   }
   //D# (cap9 on)
-  else if (cap9 > 30 && cap10 < 30 && cap12 < 30 && cap6 < 30) {
+  else if (cap9 > thresholdON && cap10 < thresholdOFF && cap12 < thresholdOFF && cap6 < thresholdOFF) {
     silentNoteYellow(6);
+    playNote(NOTE_DS5);
   }
   //E  (cap 9 and 12 on)
-  else if (cap9 > 30 && cap12 > 30 && cap6 < 30 && cap10 < 30) {
+  else if (cap9 > thresholdON && cap12 > thresholdON && cap6 < thresholdOFF && cap10 < thresholdOFF) {
     silentNoteRed(7);
+    playNote(NOTE_E5);
   }
   //F  (cap 9 and 6 on)
-  else if (cap9 > 30 && cap6 > 30 && cap10 < 30 && cap12 < 30) {
+  else if (cap9 > thresholdON && cap6 > thresholdON && cap10 < thresholdOFF && cap12 < thresholdOFF) {
     silentNoteRed(8);
+    playNote(NOTE_F5);
   }
   //F# (cap 9 and 6 and 12 on)
-  else if (cap9 > 30 && cap6 > 30 && cap12 > 30 && cap10 < 30) {
+  else if (cap9 > thresholdON && cap6 > thresholdON && cap12 > thresholdON && cap10 < thresholdOFF) {
     silentNoteYellow(7);
+    playNote(NOTE_FS5);
   }
   //G  (cap 10 on)
-  else if (cap10 > 30 && cap9 < 30 && cap6 < 30 && cap12 < 30) {
+  else if (cap10 > thresholdON && cap9 < thresholdOFF && cap6 < thresholdOFF && cap12 < thresholdOFF) {
     silentNoteRed(9);
+    playNote(NOTE_G5);
   }
   //G#  (cap10 and 12 on)
-  else if (cap10 > 30 && cap12 > 30 && cap6 < 30 && cap9 < 30) {
+  else if (cap10 > thresholdON && cap12 > thresholdON && cap6 < thresholdOFF && cap9 < thresholdOFF) {
     silentNoteYellow(8);
+    playNote(NOTE_GS5);
   }
   //A   (cap 10 and 6 on)
-  else if (cap10 > 30 && cap6 > 30 && cap12 < 30 && cap9 < 30) {
+  else if (cap10 > thresholdON && cap6 > thresholdON && cap12 < thresholdOFF && cap9 < thresholdOFF) {
     silentNoteBlue(5);
+    playNote(NOTE_A5);
   }
   //A#  (cap10 and 6 and 12 on)
-  else if (cap10 > 30 && cap6 > 30 && cap12 > 30 && cap9 < 30) {
+  else if (cap10 > thresholdON && cap6 > thresholdON && cap12 > thresholdON && cap9 < thresholdOFF) {
     silentNoteYellow(9);
+    playNote(NOTE_AS5);
   }
   //B  (cap 10 and 9 on)
-  else if (cap10 > 30 && cap9 > 30 && cap12 < 30 && cap6 < 30) {
+  else if (cap10 > thresholdON && cap9 > thresholdON && cap12 < thresholdOFF && cap6 < thresholdOFF) {
     silentNoteBlue(6);
+    playNote(NOTE_B5);
   }
-  Serial.print("Cap 3:   ");
+  /*Serial.print("Cap 3:   ");
   Serial.print(cap3);
   Serial.print(" - Cap 2:  ");
   Serial.print(cap2);
   Serial.print(" - Cap 0:   ");
   Serial.print(cap0);
   Serial.print(" - Cap 1:  ");
-  Serial.println(cap1);
+  Serial.println(cap1);*/
+  
+    Serial.print("Cap 10:   ");
+  Serial.print(cap10);
+  Serial.print(" - Cap 9:  ");
+  Serial.print(cap9);
+  Serial.print(" - Cap 6:   ");
+  Serial.print(cap6);
+  Serial.print(" - Cap12 :  ");
+  Serial.println(cap12);
   CircuitPlayground.clearPixels();
   delay(100);
 }
+
+
+
