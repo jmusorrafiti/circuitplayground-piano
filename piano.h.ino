@@ -38,6 +38,15 @@
 
 void setup() {
   // put your setup code here, to run once:
+  pinMode(1,INPUT);
+  pinMode(0,INPUT);
+  pinMode(2,INPUT);
+  pinMode(3,INPUT);
+  
+  pinMode(12,INPUT);
+  pinMode(6,INPUT);
+  pinMode(9,INPUT);
+  pinMode(10,INPUT);
   CircuitPlayground.begin();
 }
 
@@ -60,11 +69,11 @@ void playNote(int f) {
 
 void loop() {
   int thresholdON = 31;
-  int thresholdOFF = 30;
+  int thresholdOFF = 50;
   int thresholdON2 = 31;
-  int thresholdOFF2 = 35;
+  int thresholdOFF2 = 55;
   int thresholdON3 = 20;
-  int thresholdOFF3 = 30;
+  int thresholdOFF3 = 50;
   //C4-B4
   //C  (Cap1 on)
   if (cap1 > thresholdON && cap0 < thresholdOFF && cap3 < thresholdOFF && cap2 < thresholdOFF && cap12 < thresholdOFF && cap6 < thresholdOFF && cap9 < thresholdOFF && cap10 < thresholdOFF) {
@@ -192,21 +201,21 @@ void loop() {
     silentNoteBlue(6);
     playNote(NOTE_B5);
   }
-  /*Serial.print("Cap 3:   ");
+  Serial.print("Cap 3:   ");
   Serial.print(cap3);
   Serial.print(" - Cap 2:  ");
   Serial.print(cap2);
   Serial.print(" - Cap 0:   ");
   Serial.print(cap0);
   Serial.print(" - Cap 1:  ");
-  Serial.println(cap1);*/
-  
+  Serial.println(cap1);
+  /*
   Serial.print("Cap1: ");
   Serial.print(cap1);
   Serial.print(" - Cap12: ");
-  Serial.println(cap12);
-  
-  /*Serial.print("  Cap 10:   ");
+  Serial.println(cap12);*/
+  /*
+  Serial.print("  Cap 10:   ");
   Serial.print(cap10);
   Serial.print(" - Cap 9:  ");
   Serial.print(cap9);
@@ -215,5 +224,5 @@ void loop() {
   Serial.print(" - Cap12 :  ");
   Serial.println(cap12);*/
   CircuitPlayground.clearPixels();
-  delay(500);
+  delay(250);
 }
